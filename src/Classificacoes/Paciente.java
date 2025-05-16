@@ -21,6 +21,9 @@ public class Paciente extends Pessoa {
         this.plano = plano;
     }
 
+    public Paciente() {
+    }
+
     /***************************** GETS *******************************/
     public int getIdpaciente() {
         return idpaciente;

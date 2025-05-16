@@ -15,6 +15,9 @@ public class Endereco {
         this.complemento = complemento;
     }
 
+    public Endereco() {
+    }
+
     /***************************** GETS *******************************/
     public String getRua() {
         return rua;

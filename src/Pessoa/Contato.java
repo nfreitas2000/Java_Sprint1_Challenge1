@@ -11,6 +11,8 @@ public class Contato {
         this.email = email;
     }
 
+    public Contato() {}
+
     /***************************** GETS *******************************/
 
     public String getTelefone() {

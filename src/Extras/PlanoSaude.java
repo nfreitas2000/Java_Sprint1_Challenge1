@@ -11,6 +11,9 @@ public class PlanoSaude {
         this.cobertura = cobertura;
     }
 
+    public PlanoSaude() {
+    }
+
     /***************************** GETS *******************************/
     public String getNome() {
         return nome;

@@ -15,6 +15,9 @@ public class Guias {
         this.conteudo = conteudo;
     }
 
+    public Guias() {
+    }
+
     /***************************** GETS *******************************/
     public String getTitulo() {
         return titulo;

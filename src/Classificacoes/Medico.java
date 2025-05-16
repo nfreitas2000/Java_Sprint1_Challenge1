@@ -15,6 +15,8 @@ public class Medico extends Funcionario{
         this.especialidade = especialidade;
     }
 
+    public Medico(){}
+
     /***************************** GETS *******************************/
     public String getEspecialidade() {
         return especialidade;

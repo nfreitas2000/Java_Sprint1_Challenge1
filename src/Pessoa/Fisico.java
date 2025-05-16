@@ -13,6 +13,8 @@ public class Fisico {
         this.tipoSanguineo = tipoSanguineo;
     }
 
+    public Fisico() {}
+
     /***************************** GETS *******************************/
     public double getPeso() {
         return peso;

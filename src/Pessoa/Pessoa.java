@@ -23,6 +23,8 @@ public class Pessoa {
         this.conta = conta;
     }
 
+    public Pessoa() {}
+
     /***************************** GETS *******************************/
     public String getNome() {
         return nome;

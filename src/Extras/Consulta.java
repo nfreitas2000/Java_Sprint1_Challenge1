@@ -19,6 +19,9 @@ public class Consulta {
         this.medico = medico;
     }
 
+    public Consulta() {
+    }
+
     /***************************** GETS *******************************/
 
     public String getData() {
