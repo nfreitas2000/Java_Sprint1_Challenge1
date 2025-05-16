@@ -40,23 +40,4 @@ public class Paciente extends Pessoa {
     }
 
     /***************************** METODOS *******************************/
-
-    public void agendarConsulta(){
-
-    }
-
-    public void cancelarConsulta(){
-
-    }
-
-    public void falarSuporte(){
-
-
-    }
-
-    public void visualizarDados(){
-        getDadosLogin();
-        getDadosPessoa();
-        System.out.println("---------------------------------------------------------------------------");
-    }
 }

@@ -1,8 +1,8 @@
 package Pessoa;
 
 public class Contato {
-    protected String telefone;
-    protected String email;
+    private String telefone;
+    private String email;
 
     /***************************** CONSTRUTOR *******************************/
 

@@ -1,4 +1,6 @@
+import Classificacoes.Medico;
 import Classificacoes.Paciente;
+import Extras.Consulta;
 import Extras.Guias;
 import Extras.PlanoSaude;
 import Pessoa.Conta;
@@ -21,7 +23,7 @@ public class Main {
         Fisico fisicoPaciente = new Fisico(70, 1.71, "O+");
         Endereco enderecoPaciente = new Endereco("Rua ABC", "43", "00000001", "Casa");
         Contato contatoPaciente = new Contato("5511999999999", "paciente@gmail.com");
-        Conta contaPaciente = new Conta("José", "123");
+        Conta contaPaciente = new Conta("Paciente José", "123");
         PlanoSaude planoPaciente = new PlanoSaude("Santander", "High");
 
         Paciente paciente = new Paciente("José Oliveira", "12345678901", 18, fisicoPaciente, enderecoPaciente, contatoPaciente, contaPaciente, 01, planoPaciente);
@@ -36,75 +38,208 @@ public class Main {
 
         //===================================================================================================
 
-        while (true){
+        //CRIAÇÃO DO MEDICO GENERICO
 
+        Fisico fisicoMedico = new Fisico(81, 1.92, "AB-");
+        Endereco enderecoMedico = new Endereco("Rua Manaus", "513", "00000002", "Prédio");
+        Contato contatoMedico = new Contato("5511888888888", "medico@gmail.com");
+        Conta contaMedico = new Conta("Medico Douglas", "med123");
+
+        Medico medico = new Medico("Douglas Carvalho dos Santos", "10987654321", 31, fisicoMedico, enderecoMedico, contatoMedico, contaMedico, 02, 15000, "Ortopedista");
+
+        //===================================================================================================
+
+        // CRIAÇÃO DE CONSULTA GENERICA
+
+        Consulta consulta = new Consulta("14/06/2025", "14:00", paciente, medico);
+
+        //===================================================================================================
+
+        // CRIAÇÃO DE CONTA TESTE
+
+        Conta conta_teste = new Conta();
+
+        //===================================================================================================
+        while (true) {
             System.out.println("Seja bem-vindo ao sistema de simulação dos GuideDevs. Selecione qual cargo deseja simular:");
             System.out.println("0 - Sair");
             System.out.println("1 - Paciente");
             System.out.println("2 - Médico");
+            System.out.println("3 - Simulador de Login");
 
             System.out.print("Digite: ");
             int escolha = sc.nextInt();
 
-            while (true) {
-                switch (escolha) {
-                    case 0:
-                        System.out.println("Você encerrou o programa.");
-                        sc.next();
-                        break;
-                    case 1:
+            if (escolha == 0) {
+                System.out.println("===========================================================================");
+                System.out.println("Você encerrou o programa.");
+                System.out.println("===========================================================================");
+                sc.nextLine();
+                break;
+            } else if (escolha == 1) {
+                while (true) {
+                    System.out.println("===========================================================================");
+                    System.out.println("Seja bem-vindo, paciente " + paciente.getConta().getUsuario() + "!");
+                    System.out.println("O que você deseja realizar?");
+                    System.out.println("0 - Sair");
+                    System.out.println("1 - Visualizar meus dados");
+                    System.out.println("2 - Desejo alterar meus dados");
+                    System.out.println("3 - Visualizar minhas consultas agendadas");
+                    System.out.println("4 - Acessar conteúdos guias");
 
-                        System.out.println("===========================================================================");
-                        System.out.println("Seja bem-vindo, " + paciente.getConta().getUsuario() + "!");
-                        System.out.println("O que você deseja realizar?");
-                        System.out.println("0 - Sair");
-                        System.out.println("1 - Visualizar meus dados");
-                        System.out.println("2 - Desejo alterar meus dados");
-                        System.out.println("3 - Agendar consulta");
-                        System.out.println("4 - Confirmar consulta");
-                        System.out.println("5 - Desmacar consulta");
-                        System.out.println("6 - Acessar conteúdos guias");
-                        System.out.println("7 - Falar com o suporte");
+                    System.out.print("Digite: ");
+                    int num = sc.nextInt();
 
-                        System.out.print("Digite: ");
-                        int num = sc.nextInt();
+                    switch (num) {
+                        case 0:
+                            break;
+                        case 1:
+                            paciente.visualizarDados();
+                            System.out.println("0 - Voltar");
+                            System.out.print("Digite: ");
+                            sc.nextInt();
+                            continue;
+                        case 2:
+                            paciente.alterarDadosCadastro();
+                            continue;
+                        case 3:
+                            consulta.exibirDadosConsulta();
+                            System.out.println("0 - Voltar");
+                            System.out.print("Digite: ");
+                            sc.nextInt();
+                            continue;
+                        case 4:
+                            System.out.println("Qual conteúdo você deseja acessar?");
+                            System.out.println("0 - Voltar");
+                            System.out.println("1 - " + g1.getTitulo());
+                            System.out.println("2 - " + g2.getTitulo());
+                            System.out.println("3 - " + g3.getTitulo());
 
-                        switch (num) {
-                            case 0:
-                                break;
-                            case 1:
-                                paciente.visualizarDados();
-                                System.out.println("0 - Voltar");
-                                System.out.print("Digite: ");
-                                sc.nextInt();
-                                break;
-                            case 2:
-                                paciente.alterarDadosCadastro();
-                                break;
-                            case 6:
-                                System.out.println("Qual conteúdo você deseja acessar?");
-                                System.out.println("0 - Voltar");
-                                System.out.println("1 - " + g1.getTitulo());
-                                System.out.println("2 - " + g2.getTitulo());
-                                System.out.println("3 - " + g3.getTitulo());
+                            System.out.print("Digite: ");
+                            int escolha_material = sc.nextInt();
 
-                                System.out.print("Digite: ");
-                                int escolha_material = sc.nextInt();
-                                switch (escolha_material) {
-                                    case 0:
-                                        break;
-                                    case 1:
-                                        g1.mostrarConteudo();
-                                        break;
-                                    case 2:
-                                        g2.mostrarConteudo();
-                                        break;
-                                    case 3:
-                                        g3.mostrarConteudo();
-                                        break;
-                                }
-                        }
+                            switch (escolha_material) {
+                                case 0:
+                                    continue;
+                                case 1:
+                                    g1.mostrarConteudo();
+                                    continue;
+                                case 2:
+                                    g2.mostrarConteudo();
+                                    continue;
+                                case 3:
+                                    g3.mostrarConteudo();
+                                    continue;
+                                default:
+                                    System.out.println("Opção inválida! Tente novamente.");
+                                    continue;
+                            }
+                        default:
+                            System.out.println("===========================================================================");
+                            System.out.println("Opção inválida! Tente novamente.");
+                            continue;
+                    }break;
                 }
+            }else if (escolha == 2) {
+                while (true){
+                    System.out.println("===========================================================================");
+                    System.out.println("Seja bem-vindo, doutor " + medico.getConta().getUsuario() + "!");
+                    System.out.println("O que você deseja realizar?");
+                    System.out.println("0 - Sair");
+                    System.out.println("1 - Visualizar meus dados");
+                    System.out.println("2 - Alterar meus dados");
+                    System.out.println("3 - Visualizar consultas agendadas");
+                    System.out.println("4 - Visualizar dados dos pacientes");
+                    System.out.println("5 - Gerenciar horários");
+
+
+                    System.out.print("Digite: ");
+                    int num_medico = sc.nextInt();
+
+                    switch (num_medico) {
+                        case 0:
+                            break;
+                        case 1:
+                            medico.visualizarDados();
+                            System.out.println("0 - Voltar");
+                            System.out.print("Digite: ");
+                            sc.nextInt();
+                            continue;
+                        case 2:
+                            medico.alterarDadosCadastro();
+                            continue;
+                        case 3:
+                            consulta.exibirDadosConsulta();
+                            System.out.println("0 - Voltar");
+                            System.out.print("Digite: ");
+                            sc.nextInt();
+                            continue;
+                        case 4:
+                            medico.visualizarDadosPaciente(paciente);
+                            System.out.println("0 - Voltar");
+                            System.out.print("Digite: ");
+                            sc.nextInt();
+                            continue;
+                        case 5:
+                            System.out.println("===========================================================================");
+                            System.out.println("O que você deseja fazer:");
+                            System.out.println("1 - Marcar entrada");
+                            System.out.println("2 - Marcar saída");
+                            System.out.println("3 - Visualizar entradas e saidas hoje");
+
+                            System.out.print("Digite: ");
+                            int num_horarios = sc.nextInt();
+
+                            switch (num_horarios){
+                                case 1:
+                                    System.out.println("===========================================================================");
+                                    medico.marcarHorarioEntrada();
+                                    continue;
+                                case 2:
+                                    System.out.println("===========================================================================");
+                                    medico.marcarHorarioSaida();
+                                    continue;
+                                case 3:
+                                    System.out.println("===========================================================================");
+                                    medico.visualizarHorarios();
+                                    continue;
+                            }
+                        default:
+                            System.out.println("===========================================================================");
+                            System.out.println("Opção inválida! Tente novamente.");
+                            continue;
+                    }break;
+                }
+            } else if (escolha == 3) {
+                while (true) {
+                    System.out.println("===========================================================================");
+                    System.out.println("Essa é uma área de testes de login. Aqui você pode testa funções relaciodadas ao login de um usuário: ");
+                    System.out.println("0 - Sair");
+                    System.out.println("1 - Criar um login");
+                    System.out.println("2 - Verificar se o login é funcional");
+
+                    System.out.print("Digite: ");
+                    int num_login = sc.nextInt();
+
+                    switch (num_login) {
+                        case 0:
+                            break;
+                        case 1:
+                            conta_teste.criarLogin();
+                            continue;
+                        case 2:
+                            conta_teste.realizarLogin();
+                            continue;
+                        default:
+                            System.out.println("===========================================================================");
+                            System.out.println("Opção inválida! Tente novamente.");
+                            continue;
+                    }break;
+                }
+            } else {
+                System.out.println("===========================================================================");
+                System.out.println("Opção inválida! Tente novamente.");
+                System.out.println("===========================================================================");
             }
         }
     }

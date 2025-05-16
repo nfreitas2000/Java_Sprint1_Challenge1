@@ -13,6 +13,8 @@ public class Conta {
         this.senha = senha;
     }
 
+    public Conta(){}
+
     /***************************** GETS *******************************/
 
     public String getUsuario() {
@@ -38,11 +40,13 @@ public class Conta {
     public void criarLogin(){
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("===========================================================================");
         System.out.print("Primeiro de tudo, digite qual será seu novo usuário: ");
-        setUsuario(sc.next());
+        setUsuario(sc.nextLine());
         System.out.print("Muito bem! Agora digite sua senha: ");
-        setSenha(sc.next());
+        setSenha(sc.nextLine());
         System.out.println("Muito bom! Sua conta foi criada, agora basta entrar no nosso sistema!");
+        System.out.println("===========================================================================");
     }
 
     public boolean verificadorLogin(String user, String senha){
@@ -53,28 +57,26 @@ public class Conta {
         }
     }
 
-    public boolean realizarLogin(){
-
-        int i = 0;
+    public void realizarLogin(){
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-
             System.out.print("Digite o usuário: ");
-            String usuarioDigitado = sc.next();
+            String usuarioDigitado = sc.nextLine();
             System.out.print("Digite a senha: ");
-            String senhaDigitada = sc.next();
+            String senhaDigitada = sc.nextLine();
 
             if (verificadorLogin(usuarioDigitado, senhaDigitada)) {
+                System.out.println("===========================================================================");
                 System.out.println("Acesso liberado!");
-                return true;
+                System.out.println("===========================================================================");
+                break;
             } else if ((!verificadorLogin(usuarioDigitado, senhaDigitada))){
+                System.out.println("===========================================================================");
                 System.out.println("Acesso negado!");
-                return false;
+                System.out.println("===========================================================================");
+                break;
             }
         }
     }
-
-
-
 }

@@ -85,7 +85,7 @@ public class Pessoa {
 
 
     public void getDadosPessoa(){
-        System.out.println("==================================================");
+        System.out.println("===========================================================================");
         System.out.println("Pessoais --- ");
         System.out.println("Nome: " + nome);
         System.out.println("CPF: " + cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9) );
@@ -95,57 +95,18 @@ public class Pessoa {
         System.out.println("Endereço --- " + "\n" + endereco.getDadosEndereco() + "\n");
     }
 
-    public void realizarCadastro(){
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Digite o seu nome: ");
-        setNome(sc.nextLine());
-        System.out.print("Digite seu CPF (apenas números): ");
-        while (true){
-            String cpfDigitado = sc.next();
-            if (cpfDigitado.length() == 11) {
-                setCpf(cpfDigitado);
-                break;
-            } else {
-                System.out.println("CPF inválido. Tente novamente.");
-            }
-        }
-        System.out.print("Digite quantos anos você tem: ");
-        while (true){
-            int idadeDigitada = sc.nextInt();
-            if (idadeDigitada > 120 || idadeDigitada < 0){
-                System.out.println("Idade inválida. Tente novamente.");
-            } else {
-                setIdade(idadeDigitada);
-                break;
-            }
-        }
-        System.out.print("Digite seu peso em kg (somente números): ");
-        fisico.setPeso(sc.nextDouble());
-        System.out.print("Digite sua altura em metros (somente números:): ");
-        fisico.setAltura(sc.nextDouble());
-        System.out.print("Digite seu tipo sanguíneo (Ex: AB+, O-)");
-        fisico.setTipoSanguineo(sc.next());
-
+    public void visualizarDados(){
+        System.out.println("===========================================================================");
+        System.out.println("Usuário: " + conta.getUsuario());
         getDadosPessoa();
-
-        while (true){
-            System.out.print("Seus dados estão corretos? (<S> = Sim, <N> = Não): ");
-            String confirmacao = sc.next().toUpperCase();
-            if (confirmacao.equals("S")){
-                System.out.println("Otimo! Então vamos criar o seu login.");
-                break;
-            } else if (confirmacao.equals("N")) {
-                alterarDadosCadastro();
-            } else{
-                System.out.println("O digito não foi reconhecido. Tente novamente");
-            }
-        }
+        System.out.println("---------------------------------------------------------------------------");
     }
+
     public void alterarDadosCadastro(){
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Qual tipo de dado você alterar?");
+        System.out.println("0 - Voltar");
         System.out.println("1 - Pessoais");
         System.out.println("2 - Fisicos");
         System.out.println("3 - Contato");
@@ -348,10 +309,5 @@ public class Pessoa {
                 }
                 break;
         }
-    }
-    public void getDadosLogin(){
-        System.out.println("--------------------------------------------------");
-        System.out.println("Usuário: " + conta.getUsuario());
-        System.out.println("Senha: " + conta.getSenha());
     }
 }
